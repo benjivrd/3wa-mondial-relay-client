@@ -62,7 +62,7 @@ console.log(listeRelayData)
       </button>
     </form>
     {
-        isLoading? <p>Chargement...</p> : <PointRelayMap listeRelayData={listeRelayData}/>
+        isLoading ? <p>Chargement...</p> : <PointRelayMap listeRelayData={listeRelayData}/>
     }
     </>
 
