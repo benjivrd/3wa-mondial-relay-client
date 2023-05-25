@@ -1,12 +1,13 @@
-import { useState,useEffect, Fragment } from "react";
+import { useState,useEffect } from "react";
 import PointRelayMap from "../components/pointRelayMap";
 import { searchPointRelay } from "../services/mondialRelay.service";
+import Loading from "react-spinners/SyncLoader";
 
 export default function Home() {
   const [codePostal, setCodePostal] = useState("");
   const [pays, setPays] = useState("");
   const [limitResult, setLimitResult] = useState(2);
-  const [listeRelayData, setListeRelayData] = useState([]);
+  const [listeRelayData, setListeRelayData] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
 useEffect(()=> {
@@ -34,8 +35,9 @@ console.log(listeRelayData)
   }
 
   return (
-    <>
-    <form action="">
+    <div className="container">
+      <div className="form">
+      <form action="">
       <div className="form-group">
         <label htmlFor="code-postal">Code postal</label>
         <input type="text" name="code-postal" onChange={(e)=> setCodePostal(e.target.value)} value={codePostal} id="" />
@@ -61,10 +63,13 @@ console.log(listeRelayData)
         Envoyer
       </button>
     </form>
+      </div>
+    <div className="liste-relay">
     {
-        isLoading ? <p>Chargement...</p> : <PointRelayMap listeRelayData={listeRelayData}/>
+        isLoading ? <div className="loading"><Loading size={8} color="white"/></div> : <PointRelayMap relay={listeRelayData}/>
     }
-    </>
+    </div>
+    </div>
 
   );
 }

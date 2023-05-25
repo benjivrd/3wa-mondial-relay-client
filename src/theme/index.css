@@ -1,0 +1,97 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+.map {
+  height: 50vh;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-height: 200px;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.liste-relay div{
+  border-radius: 25px;
+}
+.form{
+  height: 450px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.form form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  justify-content: center;
+}
+
+.form-group{
+  display: grid;
+  gap: 15px;
+}
+
+.form-group input{
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.form-group label{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+button {
+  width: 300px;
+  height: 55px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  color: #666;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover{
+  background-color: #ccc;
+}
+
+.container{
+  max-width: 1200px;
+margin: 0 auto;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 50px;
+}
