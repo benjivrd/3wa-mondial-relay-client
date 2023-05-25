@@ -1,6 +1,6 @@
 import { pointsRelayMapProps } from "../types/relay"
 import { OrderList } from 'primereact/orderlist';
-import { PointRelayCard } from "./PointRelayCard";
+import { PointRelayCard } from "./pointRelayCard";
 
 export  function ListeRelayDetails({relay}:pointsRelayMapProps){
 
