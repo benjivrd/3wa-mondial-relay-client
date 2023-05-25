@@ -95,3 +95,20 @@ align-content: center;
   height: 100%;
   margin-top: 50px;
 }
+
+.orderList {
+  display: flex;
+  justify-content: center;
+}
+
+.p-orderlist-controls{
+  display: none;
+}
+
+.header-container {
+ margin: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(50vh - 100px);
+}

@@ -3,12 +3,13 @@ export type pointsRelayMapProps = {
   };
   
   export type pointRelay = {
-    Latitude: string;
-    Longitude: string;
+    Latitude?: string;
+    Longitude?: string;
     LgAdr1: string;
-    Num: number;
+    LgAdr3?: string;
+    Num?: number;
     URL_Photo: string;
-    Horaires: relayHoraire;
+    Horaires?: relayHoraire;
   };
   
   export type searchData = {
