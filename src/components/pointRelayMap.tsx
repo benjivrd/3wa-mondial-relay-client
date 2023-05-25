@@ -1,49 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { pointRelay, pointsRelayMapProps } from "../types/relay";
 
-export type pointsRelayMapProps = {
-  relay: [pointRelay];
-};
-
-export type pointRelay = {
-  Latitude: string;
-  Longitude: string;
-  LgAdr1: string;
-  Num: number;
-  URL_Photo: string;
-  Horaires: relayHoraire;
-};
-
-export type relayHoraire = {
-  Lundi: {
-    Matin: string;
-    ApresMidi: string;
-  };
-  Mardi: {
-    Matin: string;
-    ApresMidi: string;
-  };
-  Mercredi: {
-    Matin: string;
-    ApresMidi: string;
-  };
-  Jeudi: {
-    Matin: string;
-    ApresMidi: string;
-  };
-  Vendredi: {
-    Matin: string;
-    ApresMidi: string;
-  };
-  Samedi: {
-    Matin: string;
-    ApresMidi: string;
-  };
-  Dimanche: {
-    Matin: string;
-    ApresMidi: string;
-  };
-};
 
 export default function PointRelayMap({ relay }: pointsRelayMapProps) {
   const lat = relay?.map((value) =>

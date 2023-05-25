@@ -2,13 +2,14 @@ import { useState,useEffect } from "react";
 import PointRelayMap from "../components/pointRelayMap";
 import { searchPointRelay } from "../services/mondialRelay.service";
 import Loading from "react-spinners/SyncLoader";
+import { pointRelay, searchData } from "../types/relay";
 
 export default function Home() {
-  const [codePostal, setCodePostal] = useState("");
-  const [pays, setPays] = useState("");
-  const [limitResult, setLimitResult] = useState(2);
-  const [listeRelayData, setListeRelayData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [codePostal, setCodePostal] = useState<string>("");
+  const [pays, setPays] = useState<string>("");
+  const [limitResult, setLimitResult] = useState<number>(2);
+  const [listeRelayData, setListeRelayData] = useState<[pointRelay]>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
 useEffect(()=> {
 console.log(listeRelayData)
@@ -18,7 +19,12 @@ console.log(listeRelayData)
     e.preventDefault();
     setIsLoading(true)
     try {
-      const res = await searchPointRelay({codePostal,pays,limitResult})
+      const searchData: searchData = {
+        codePostal,
+        pays,
+        limitResult,
+      }
+      const res = await searchPointRelay(searchData)
         
       if(res){
           setListeRelayData(res.data)
