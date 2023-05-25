@@ -77,7 +77,7 @@ export default function PointRelayMap({ relay }: pointsRelayMapProps) {
                     parseFloat(listeR.Longitude.replace(",", ".")),
                   ]}
                 >
-                  <Popup maxWidth={150} maxHeight={150}>
+                  <Popup maxWidth={600} maxHeight={600}>
                     <h2>{listeR.LgAdr1.trim()}</h2>
                     <img src={listeR.URL_Photo} width={200} height={150} />
                     <table>
