@@ -1,6 +1,6 @@
-import { pointRelay } from "../types/relay";
+import {  relaySearch } from "../types/relay";
 
-export function PointRelayCard({ LgAdr1, LgAdr3, URL_Photo }: pointRelay) {
+export function PointRelayCard({ LgAdr1, LgAdr3, URL_Photo }: relaySearch) {
   return (
     <div className="flex flex-wrap p-2 align-items-center gap-3">
       <img

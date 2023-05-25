@@ -1,13 +1,17 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { pointRelay, pointsRelayMapProps } from "../types/relay";
+import { pointRelay,  pointsRelayMapProps } from "../types/relay";
 
 
 export default function PointRelayMap({ relay }: pointsRelayMapProps) {
-  const lat = relay?.map((value) =>
-    parseFloat(value.Latitude.replace(",", "."))).reduce((prev, next) => prev + next) / relay.length
-  const long = relay?.map((value) =>
-    parseFloat(value.Longitude.replace(",", "."))).reduce((prev, next) => prev + next) / relay.length
+  
+  const lat = relay.map((value) =>
+  parseFloat(value.Latitude.replace(",", "."))).reduce((prev, next) => prev + next) / relay.length
+
+  
+const long = relay.map((value) =>
+  parseFloat(value.Longitude.replace(",", "."))).reduce((prev, next) => prev + next) / relay.length
+
 
 
     return (
@@ -25,7 +29,7 @@ export default function PointRelayMap({ relay }: pointsRelayMapProps) {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {relay.map((listeR: pointRelay) => {
+            {relay.map((listeR:  pointRelay) => {
               return (
                 <Marker
                   key={listeR.Num}
