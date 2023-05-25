@@ -66,7 +66,7 @@ console.log(listeRelayData)
       </div>
     <div className="liste-relay">
     {
-        isLoading ? <div className="loading"><Loading size={8} color="white"/></div> : <PointRelayMap relay={listeRelayData}/>
+        isLoading ? <div className="loading"><Loading size={8} color="white"/></div> : listeRelayData && <PointRelayMap relay={listeRelayData}/>
     }
     </div>
     </div>
