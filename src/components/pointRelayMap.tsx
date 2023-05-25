@@ -47,11 +47,10 @@ export type relayHoraire = {
 
 export default function PointRelayMap({ relay }: pointsRelayMapProps) {
   const lat = relay?.map((value) =>
-    parseFloat(value.Latitude.replace(",", "."))
-  );
+    parseFloat(value.Latitude.replace(",", "."))).reduce((prev, next) => prev + next) / relay.length
   const long = relay?.map((value) =>
-    parseFloat(value.Longitude.replace(",", "."))
-  );
+    parseFloat(value.Longitude.replace(",", "."))).reduce((prev, next) => prev + next) / relay.length
+
 
     return (
       <>
@@ -59,8 +58,8 @@ export default function PointRelayMap({ relay }: pointsRelayMapProps) {
           <MapContainer
             style={{ height: "50vh" }}
             center={[
-              lat.reduce((prev, next) => prev + next) / relay.length,
-              long.reduce((prev, next) => prev + next) / relay.length,
+              lat,
+              long
             ]}
             zoom={12}
           >
