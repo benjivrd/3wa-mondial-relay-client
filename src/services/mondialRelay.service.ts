@@ -11,12 +11,10 @@ export async function  searchPointRelay(data:searchData) {
 
      if(response.status === 200)
      {
-        return response
+         return {status: response.status, data: response.data}
      }
-
-
     }
     catch(error:any){
-        return error.response.data.messages
+        return {status: error.response.status, data: error.response.data.messages}
     }
 }

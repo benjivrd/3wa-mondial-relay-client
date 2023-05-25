@@ -3,6 +3,8 @@ import PointRelayMap from "../components/pointRelayMap";
 import { searchPointRelay } from "../services/mondialRelay.service";
 import Loading from "react-spinners/SyncLoader";
 import { pointRelay, searchData } from "../types/relay";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const [codePostal, setCodePostal] = useState<string>("");
@@ -11,9 +13,9 @@ export default function Home() {
   const [listeRelayData, setListeRelayData] = useState<[pointRelay]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-useEffect(()=> {
-console.log(listeRelayData)
-},[listeRelayData])
+  useEffect(()=> {
+    console.log(listeRelayData)
+  },[listeRelayData])
 
   async function handlerSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,14 +28,21 @@ console.log(listeRelayData)
       }
       const res = await searchPointRelay(searchData)
         
-      if(res){
-          setListeRelayData(res.data)
-          console.log(res.data)
-          setIsLoading(false)
+      if(res) {
+          const res = await searchPointRelay({codePostal, pays, limitResult})
+
+          if (res.status === 200) {
+              setListeRelayData(res.data)
+              setIsLoading(false)
+          } else {
+              res.data.forEach((message) => {
+                  toast.error(message);
+              })
+              setIsLoading(false)
+          }
       }
     } 
     catch (error) {
-        
     }
     finally{
         setIsLoading(false)
@@ -42,7 +51,20 @@ console.log(listeRelayData)
 
   return (
     <div className="container">
+        <ToastContainer
+            position="top-right"
+            autoClose={3500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+        />
       <div className="form">
+
       <form action="">
       <div className="form-group">
         <label htmlFor="code-postal">Code postal</label>
