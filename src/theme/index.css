@@ -114,10 +114,14 @@ align-content: center;
   display: none;
 }
 
+.container h1 {
+  text-align: center;
+}
+
 .header-container {
- margin: 50px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: calc(50vh - 100px);
+  gap: 0 50px;
 }
