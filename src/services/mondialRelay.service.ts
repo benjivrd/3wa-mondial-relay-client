@@ -1,9 +1,11 @@
 import axios from "axios";
 import { searchData } from "../types/relay";
 
+const URL_API = 'https://api-mondial-relay.bencode.fr'
+
 export async function  searchPointRelay(data:searchData) {
     try{
-     const response =  await axios.post("http://localhost:3300/recherche-point-relay",data,{
+     const response =  await axios.post(URL_API + "/recherche-point-relay",data,{
         headers:{
             "Content-Type":"application/json"
         }
