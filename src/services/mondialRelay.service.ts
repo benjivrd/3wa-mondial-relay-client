@@ -1,7 +1,9 @@
 import axios from "axios";
 import { searchData } from "../types/relay";
 
-const URL_API = 'https://api-mondial-relay.bencode.fr'
+let env = "prod";
+
+const URL_API = env === "dev" ? "http://localhost:3400" : "https://api-mondial-relay.bencode.fr"
 
 export async function  searchPointRelay(data:searchData) {
     try{

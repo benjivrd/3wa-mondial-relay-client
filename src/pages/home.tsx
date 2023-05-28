@@ -5,7 +5,9 @@ import Loading from "react-spinners/SyncLoader";
 import { pointRelay, searchData } from "../types/relay";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Select from "react-select";
 import { ListeRelayDetails } from "../components/listeRelayDetails";
+import { FR , BE, CH} from 'country-flag-icons/react/3x2'
 
 export default function Home() {
   const [codePostal, setCodePostal] = useState<string>("");
@@ -17,6 +19,12 @@ export default function Home() {
   useEffect(() => {
     console.log(listeRelayData);
   }, [listeRelayData]);
+
+  const options = [
+    { value: "FR", label: <FR title="France" className="drap"/> },
+    { value: "BEL", label: <BE title="Belgique" className="drap"/> },
+    { value: "CHE", label: <CH title="Suisse" className="drap"/> },
+  ];
 
   async function handlerSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -63,56 +71,59 @@ export default function Home() {
         theme="dark"
       />
       <div className="header-container">
-      <div className="form">
-        <form action="">
-          <div className="form-group">
-            <label htmlFor="code-postal">Code postal</label>
-            <input
-              type="text"
-              name="code-postal"
-              onChange={(e) => setCodePostal(e.target.value)}
-              value={codePostal}
-              id=""
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="pays">Pays</label>
-            <input
-              type="text"
-              name="pays"
-              onChange={(e) => setPays(e.target.value)}
-              value={pays}
-              id=""
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="limit-result">Nombre de resultat</label>
-            <input
-              type="number"
-              min={2}
-              max={30}
-              step={1}
-              value={limitResult}
-              name="limit-result"
-              onChange={(e) => setLimitResult(parseInt(e.target.value))}
-              id=""
-            />
-          </div>
-          <button type="submit" onClick={handlerSubmit}>
-            Envoyer
-          </button>
-        </form>
+        <div className="form">
+          <form action="">
+            <div className="form-group">
+              <label htmlFor="code-postal">Code postal</label>
+              <input
+                type="text"
+                name="code-postal"
+                onChange={(e) => setCodePostal(e.target.value)}
+                value={codePostal}
+                id=""
+              />
+            </div>
+            <div className="form-group">
+              <Select
+                 options={options}
+                 onChange={(e: any) => setPays(e.value)}
+                 value={options.filter(function(option) {
+                   return option.value === pays;
+                 })}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 5
+                })}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="limit-result">Nombre de resultat</label>
+              <input
+                type="number"
+                min={2}
+                max={30}
+                step={1}
+                value={limitResult}
+                name="limit-result"
+                onChange={(e) => setLimitResult(parseInt(e.target.value))}
+                id=""
+              />
+            </div>
+            <button type="submit" onClick={handlerSubmit}>
+              Envoyer
+            </button>
+          </form>
+        </div>
+        <div>
+          {isLoading ? (
+            <div className="loading">
+              <Loading size={8} color="white" />
+            </div>
+          ) : (
+            listeRelayData && <ListeRelayDetails relay={listeRelayData} />
+          )}
+        </div>
       </div>
-      <div>
-        {isLoading ? (
-          <div className="loading">
-            <Loading size={8} color="white" />
-          </div>
-        ) : (
-          listeRelayData && <ListeRelayDetails relay={listeRelayData} />
-        )}
-      </div>
-     </div>
       <div className="liste-relay">
         {isLoading ? (
           <div className="loading">

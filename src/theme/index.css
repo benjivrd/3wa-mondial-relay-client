@@ -49,6 +49,15 @@ align-items: center;
   display: grid;
   gap: 15px;
 }
+.drap{
+  width: 35px;
+  height: 35px;
+}
+.form-group > div {
+  color: black;
+  width: 300px;
+  margin-top: 15px;
+}
 
 .form-group input{
   width: 300px;
